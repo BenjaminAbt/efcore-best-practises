@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>$(Tfm)</TargetFramework>
+        <OutputType>Exe</OutputType>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <RootNamespace>$(PlatformAssemblyPrefix).EntityFrameworkDemo.Apps.Console</RootNamespace>
+        <AssemblyName>$(PlatformAssemblyPrefix).EntityFrameworkDemo.Apps.Console</AssemblyName>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Database.Sqlite\Database.Sqlite.csproj" />
+        <ProjectReference Include="..\EntityFrameworkDemo\EntityFrameworkDemo.csproj" />
+    </ItemGroup>
+
+</Project>

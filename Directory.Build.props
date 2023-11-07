@@ -1,0 +1,27 @@
+<Project>
+
+    <PropertyGroup>
+        <Company>BEN ABT</Company>
+        <Authors>BEN ABT</Authors>
+        <Product>Entity Framework Demo - by BEN ABT</Product>
+
+        <!-- dont touch this vars
+            all projects are not packable by default 
+            if you want a package to be available as package, activate in the specific project please -->
+        <IsPackable>false</IsPackable>
+    </PropertyGroup>
+
+    <!-- Project Env -->
+    <PropertyGroup>
+        <Tfm>net8.0</Tfm>
+        <PlatformAssemblyPrefix>BenjaminAbt</PlatformAssemblyPrefix>
+    </PropertyGroup>
+
+    <!-- .NET SDK Settings -->
+    <PropertyGroup>
+        <LangVersion>preview</LangVersion>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+</Project>

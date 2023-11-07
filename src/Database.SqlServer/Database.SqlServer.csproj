@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>$(Tfm)</TargetFramework>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <RootNamespace>$(PlatformAssemblyPrefix).EntityFrameworkDemo.Database.SqlServer</RootNamespace>
+        <AssemblyName>$(PlatformAssemblyPrefix).EntityFrameworkDemo.Database.SqlServer</AssemblyName>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" />
+        <PackageReference Include="EntityFrameworkCore.Exceptions.SqlServer" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Database.SqlServer.Logging\Database.SqlServer.Logging.csproj" />
+        <ProjectReference Include="..\Database\Database.csproj" />
+    </ItemGroup>
+
+</Project>
