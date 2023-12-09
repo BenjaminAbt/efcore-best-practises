@@ -7,7 +7,8 @@ namespace BenjaminAbt.EntityFrameworkDemo.Database.Repositories;
 
 // This is the basis of my generic, DB server neutral EF Core repository - with a few special features
 
-public abstract class BaseRepository<T> where T : BaseEntity
+
+public abstract class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
 {
     protected IBaseDbContext DbContext { get; }
 
@@ -34,37 +35,70 @@ public abstract class BaseRepository<T> where T : BaseEntity
     }
 
     // I override all standard crud methods to allow generic access
-
+    ///<summary>
+    ///The method adds an entity to the database.
+    ///</summary>
+    ///<param name="entity"> The entity to be added to the database. </param>
+    ///<returns> EntityEntry instance corresponding to the entity. </returns>
     public EntityEntry<T> Add(T entity)
         => _set.Add(entity);
 
+    ///<summary>
+    ///Adds a range of entities to the database.
+    ///</summary>
+    ///<param name="entities"> The entities to be added to the database </param>
     public void AddRange(IEnumerable<T> entities)
         => _set.AddRange(entities);
 
+    ///<summary>
+    ///Attaches the entity to the database.
+    ///</summary>
+    ///<param name="entity"> The entity to be attached. </param>
+    ///<returns> EntityEntry instance corresponding to the entity. </returns>
     public EntityEntry<T> Attach(T entity)
         => _set.Attach(entity);
 
+    ///<summary>
+    ///Deletes entity from the database.
+    ///</summary>
+    ///<param name="entity"> The entity to be deleted. </param>
+    ///<returns> EntityEntry instance corresponding to the entity. </returns>
     public EntityEntry<T> Delete(T entity)
         => _set.Remove(entity);
 
-    public EntityEntry Remove(T entity)
-        => _set.Remove(entity);
-
+    /// <summary>
+    /// Deletes a range of entities from the database.
+    /// </summary>
+    /// <param name="entities">The entities to delete.</param>
+    /// <returns>A list of deleted entities.</returns>
     public List<EntityEntry<T>> Delete(IEnumerable<T> entities)
         => entities.Select(Delete).ToList();
 
+    ///<summary>
+    ///The method returns an IQueryable of T for a given database tracking option.
+    ///</summary>
+    ///<param name="to"> The database tracking option. </param>
+    ///<returns> IQueryable instance of T type. </returns>
     public IQueryable<T> Query(DbTrackingOptions to)
-        // In contrast to all other methods, queries
-        //   should only be made via the expandable set!
         => _expandableSet.With(to);
 
     // The SaveChanges methods are also provided, but the return is
     //   a typed struct rather than a non-saying Int
 
-    public Task<DbSaveChangesResult> SaveChangesAsync(CancellationToken ct)
+    ///<summary>
+    ///Saves changes to the database using a cancellation token.
+    ///</summary>
+    ///<param name="ct"> Cancellation token. </param>
+    ///<returns> An instance of DbSaveChangesResult. </returns>
+    public ValueTask<DbSaveChangesResult> SaveChangesAsync(CancellationToken ct)
         => DbContext.SaveChangesAsync(ct);
 
-    // Optionally, you can disable the Tracker State Update mechanism if you do not need the overhead.
-    public Task<DbSaveChangesResult> SaveChangesAsync(bool updateChangeTrackerStates, CancellationToken ct)
+    ///<summary>
+    ///Saves changes to the database with an option to update change state.
+    ///</summary>
+    ///<param name="updateChangeTrackerStates"> Boolean indicator to update change tracker states. </param>
+    ///<param name="ct"> Cancellation token. </param>
+    ///<returns> An instance of DbSaveChangesResult. </returns>
+    public ValueTask<DbSaveChangesResult> SaveChangesAsync(bool updateChangeTrackerStates, CancellationToken ct)
         => DbContext.SaveChangesAsync(updateChangeTrackerStates, ct);
 }

@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BenjaminAbt.EntityFrameworkDemo.Database.Entities;
 
+
 // You cannot use records today
 //  https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/records?WT.mc_id=DT-MVP-5001507#immutability
 
