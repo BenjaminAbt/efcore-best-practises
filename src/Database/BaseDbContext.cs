@@ -4,9 +4,10 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace BenjaminAbt.EntityFrameworkDemo.Database;
 
-// This is our custom EFCoreDbContext abstraction.
-// It is used to overwrite all underlaying entity type-unsafe CRUD methods
-
+/// <summary>
+/// This is our custom EFCoreDbContext abstraction.
+/// It is used to overwrite all underlaying entity type-unsafe CRUD methods
+/// </summary>
 public abstract class BaseDbContext : DbContext, IBaseDbContext
 {
     /// <summary>
@@ -14,7 +15,22 @@ public abstract class BaseDbContext : DbContext, IBaseDbContext
     /// </summary>
     /// <param name="options">Database context options</param>
     protected BaseDbContext(DbContextOptions options)
-        : base(options) { } // Required for dependency injection
+        : base(options) { }
+
+    /// <summary>
+    /// This method is called when the model for a derived context has been initialized,
+    /// but before the model has been locked down and used to initialize the context.
+    /// The default implementation of this method does nothing,
+    /// but it can be overridden in a derived class such that the model can be further
+    /// configured before it is locked down.
+    /// </summary>
+    /// <param name="modelBuilder">The builder being used to construct the model for this context.</param>
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        AddConventions(modelBuilder);
+    }
 
     /// <summary>
     /// Get and set DbSet
@@ -65,4 +81,10 @@ public abstract class BaseDbContext : DbContext, IBaseDbContext
 
         return new(rows);
     }
+
+    /// <summary>
+    /// Add conventions to the model builder. This method is empty and can be overridden in derived classes.
+    /// </summary>
+    /// <param name="modelBuilder">The builder being used to construct the model for this context.</param>
+    public void AddConventions(ModelBuilder modelBuilder) { }
 }

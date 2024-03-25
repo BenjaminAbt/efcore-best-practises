@@ -1,5 +1,7 @@
 ﻿using BenjaminAbt.EntityFrameworkDemo.Database;
 using BenjaminAbt.EntityFrameworkDemo.Database.Entities;
+using BenjaminAbt.EntityFrameworkDemo.Database.Sqlite;
+using BenjaminAbt.EntityFrameworkDemo.Database.SqlServer;
 using Microsoft.EntityFrameworkCore;
 
 namespace BenjaminAbt.EntityFrameworkDemo;
@@ -8,7 +10,7 @@ namespace BenjaminAbt.EntityFrameworkDemo;
 // With the help of this interface it is possible to change the database provider statically as well as dynamically
 //    without having to customize the logic stuff.
 
-public interface IMyDemoDbContext : IBaseDbContext
+public interface IMyDemoDbContext : IBaseDbContext, ISqlServerDbContext, ISqliteDbContext
 {
     DbSet<MyEntity> MyEntities { get; }
 }

@@ -10,7 +10,7 @@ namespace BenjaminAbt.EntityFrameworkDemo.Database.SqlServer.Migrations;
 // This makes it very easy to integrate EF migrations into a modern SaaS DevOps.
 
 public abstract class SqlServerMigrationContextFactory<TDbContext>
-    : IDesignTimeDbContextFactory<TDbContext> where TDbContext : SqlServerBaseDbContext
+    : IDesignTimeDbContextFactory<TDbContext> where TDbContext : DbContext, ISqlServerDbContext
 {
     /// <summary>
     /// The assembly in which the migrations are located. 
@@ -21,8 +21,7 @@ public abstract class SqlServerMigrationContextFactory<TDbContext>
     public TDbContext CreateDbContext(string[] args)
     {
         DbContextOptionsBuilder<TDbContext> optionsBuilder = new();
-        optionsBuilder.UseSqlServer(
-            b => b.MigrationsAssembly(MigrationAssembly));
+        optionsBuilder.UseSqlServer(b => b.MigrationsAssembly(MigrationAssembly));
 
         return (TDbContext)Activator.CreateInstance(typeof(TDbContext), optionsBuilder.Options)!;
     }

@@ -23,7 +23,7 @@ public static class SqliteDbContextFactory
     /// <typeparam name="T">Type of SqlServerBaseDbContext</typeparam>
     /// <param name="sqliteConnection">SqliteConnection to provide options for</param>
     /// <returns>DbContextOptions object with options for the provided SqliteConnection</returns>
-    public static DbContextOptions<T> CreateOptions<T>(SqliteConnection sqliteConnection) where T : BaseDbContext
+    public static DbContextOptions<T> CreateOptions<T>(SqliteConnection sqliteConnection) where T : BaseDbContext, ISqliteDbContext
         => new DbContextOptionsBuilder<T>()
                    .UseSqlite(sqliteConnection)
                    .EnableSensitiveDataLogging(true)
@@ -36,7 +36,7 @@ public static class SqliteDbContextFactory
     /// <typeparam name="T">Type of SqlServerBaseDbContext</typeparam>
     /// <param name="sqliteConnection">SqliteConnection to provide context for</param>
     /// <returns>New instance of the provided SqlServerBaseDbContext connected to the provided SqliteConnection</returns>
-    public static T CreateContext<T>(SqliteConnection sqliteConnection) where T : BaseDbContext
+    public static T CreateContext<T>(SqliteConnection sqliteConnection) where T : BaseDbContext, ISqliteDbContext
     {
         DbContextOptions<T> dbContextOptions = CreateOptions<T>(sqliteConnection);
 

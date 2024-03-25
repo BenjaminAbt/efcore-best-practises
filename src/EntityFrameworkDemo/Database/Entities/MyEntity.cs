@@ -31,4 +31,6 @@ public sealed class MyEntity : BaseEntity
     [MaxLength(4000)]
     [Unicode(true)]
     public string Name { get; set; } = null!;
+
+    public DateTimeOffset CreatedOn { get; set; }
 }

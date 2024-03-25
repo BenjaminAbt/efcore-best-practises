@@ -3,16 +3,16 @@
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
   </PropertyGroup>
   <ItemGroup>
-    <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="8.0.0-rc.2.23480.1" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.0-rc.2.23480.1" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.0-rc.2.23480.1" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0-rc.2.23480.1">
+    <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="9.0.0-preview.2.24128.4" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.0-preview.2.24128.4" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.0-preview.2.24128.4" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.0-preview.2.24128.4">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageVersion>
-    <PackageVersion Include="EntityFrameworkCore.Exceptions.SqlServer" Version="6.0.3.2" />
-    <PackageVersion Include="EntityFrameworkCore.Exceptions.Sqlite" Version="6.0.3" />
-    <PackageVersion Include="LinqKit.Microsoft.EntityFrameworkCore" Version="7.1.4" />
-    <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0-rc.2.23479.6" />
+    <PackageVersion Include="EntityFrameworkCore.Exceptions.SqlServer" Version="8.1.2" />
+    <PackageVersion Include="EntityFrameworkCore.Exceptions.Sqlite" Version="8.1.2" />
+    <PackageVersion Include="LinqKit.Microsoft.EntityFrameworkCore" Version="8.1.5" />
+    <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.0-preview.2.24128.5" />
   </ItemGroup>
 </Project>

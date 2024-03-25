@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BenjaminAbt.EntityFrameworkDemo.Database.SqlServer;
 
-public class DemoSqlServerDbContext : SqlServerBaseDbContext, IMyDemoDbContext
+public class DemoSqlServerDbContext : BaseDbContext, IMyDemoDbContext
 {
     public DemoSqlServerDbContext(DbContextOptions<DemoSqlServerDbContext> options)
         : base(options) { }

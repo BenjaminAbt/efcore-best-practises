@@ -15,6 +15,7 @@ using BenjaminAbt.EntityFrameworkDemo.Database.Projections;
 using BenjaminAbt.EntityFrameworkDemo.Database.Projections.Profiles;
 using BenjaminAbt.EntityFrameworkDemo.Database.Repositories;
 using BenjaminAbt.EntityFrameworkDemo.Database.Sqlite;
+using BenjaminAbt.EntityFrameworkDemo.Database.SqlServer;
 using BenjaminAbt.EntityFrameworkDemo.Models;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
@@ -41,7 +42,7 @@ MyEntityId id = MyEntityId.New();
 SqliteConnection connection = SqliteDbContextFactory.CreateSqliteInMemoryConnection();
 
 // We create the context for the seed with the open connection.
-using (DemoSqliteDbContext dbContext = SqliteDbContextFactory.CreateContext<DemoSqliteDbContext>(connection))
+using (DemoMultiDbContext dbContext = SqliteDbContextFactory.CreateContext<DemoMultiDbContext>(connection))
 {
     // We use our EFCore based MyEntityRepository to add a sample entity.
     MyEntityRepository repository = new(dbContext);
@@ -54,7 +55,7 @@ using (DemoSqliteDbContext dbContext = SqliteDbContextFactory.CreateContext<Demo
 }
 
 // We create the context for the act with the open connection.
-using (DemoSqliteDbContext dbContext = SqliteDbContextFactory.CreateContext<DemoSqliteDbContext>(connection))
+using (DemoMultiDbContext dbContext = SqliteDbContextFactory.CreateContext<DemoMultiDbContext>(connection))
 {
     // We use our EFCore based MyEntityRepository to query.
     MyEntityRepository repository = new(dbContext);

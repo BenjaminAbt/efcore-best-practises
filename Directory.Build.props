@@ -24,4 +24,10 @@
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
 
+    <!-- NuGet -->
+    <PropertyGroup>
+        <NuGetAudit>true</NuGetAudit>
+        <NuGetAuditLevel>low</NuGetAuditLevel>
+        <NuGetAuditMode>all</NuGetAuditMode>
+    </PropertyGroup>
 </Project>
